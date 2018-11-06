@@ -21,18 +21,14 @@ namespace DBScan
         {
             InitializeComponent();
             g = pnlContainer.CreateGraphics();
-            
         }
 
         private void pnlContainer_MouseClick(object sender, MouseEventArgs e)
         {
             g.FillEllipse(brush, new Rectangle(e.Location, new Size(10, 10)));
-            //g.DrawEllipse(Pens.Black, new Rectangle(e.Location, new Size(10, 10)));
             MyPoint p = new MyPoint(e.Location, false, false);
             
             lst.Add(p);
-
-            txtPoint.Text += "(" + e.Location.X + ", " + e.Location.Y + ") ";
         }
 
         private void pnlContainer_MouseMove(object sender, MouseEventArgs e)
@@ -59,7 +55,7 @@ namespace DBScan
             lstColor.Add(Color.YellowGreen);
             int k = 0;
 
-            List<MyPoint> C;
+            List<MyPoint> C = new List<MyPoint>();
             foreach (MyPoint p in lst)
             {
                 if (!p.visited)
@@ -72,7 +68,7 @@ namespace DBScan
                     }
                     else
                     {
-                        C = new List<MyPoint>();
+                        C.Clear();
                         expandCluster(lst, p, sphere_points, C, Eps, MinPts, g, brush, lstColor[k]);
                         if (k != lstColor.Count - 1)
                             k++;
@@ -107,12 +103,31 @@ namespace DBScan
                 }
             }
 
-            
-                      
-            //for (int i = 0; i < C.Count; i++)
-            //{
-            //    
-            //}
+            int x = C[0].vt.X, y = C[0].vt.Y;
+            int width = C[0].vt.X, height = C[0].vt.Y;
+
+            for (int i = 1; i < C.Count; i++)
+            {
+                if (x > C[i].vt.X)
+                {
+                    x = C[i].vt.X;
+                }
+                if (y > C[i].vt.Y)
+                {
+                    y = C[i].vt.Y;
+                }
+                if (width < C[i].vt.X)
+                {
+                    width = C[i].vt.X;
+                }
+                if (height < C[i].vt.Y)
+                {
+                    height = C[i].vt.Y;
+                }
+            }
+
+            int padding = 5;
+            g.DrawRectangle(new Pen(new SolidBrush(Color.Red)), x - padding, y - padding, width - x + padding * 4, height - y + padding * 4);
         }
 
         private List<MyPoint> regionQuery(MyPoint p, List<MyPoint> lst, float Eps)

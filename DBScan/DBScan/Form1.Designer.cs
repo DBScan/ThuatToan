@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.txtLocate = new System.Windows.Forms.Label();
-            this.txtPoint = new System.Windows.Forms.Label();
             this.pnlContainer = new System.Windows.Forms.Panel();
             this.Eps = new System.Windows.Forms.Label();
             this.txtEps = new System.Windows.Forms.TextBox();
@@ -46,14 +45,6 @@
             this.txtLocate.Name = "txtLocate";
             this.txtLocate.Size = new System.Drawing.Size(0, 17);
             this.txtLocate.TabIndex = 0;
-            // 
-            // txtPoint
-            // 
-            this.txtPoint.AutoSize = true;
-            this.txtPoint.Location = new System.Drawing.Point(12, 510);
-            this.txtPoint.Name = "txtPoint";
-            this.txtPoint.Size = new System.Drawing.Size(0, 17);
-            this.txtPoint.TabIndex = 1;
             // 
             // pnlContainer
             // 
@@ -142,7 +133,6 @@
             this.Controls.Add(this.txtEps);
             this.Controls.Add(this.Eps);
             this.Controls.Add(this.pnlContainer);
-            this.Controls.Add(this.txtPoint);
             this.Controls.Add(this.txtLocate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
@@ -155,7 +145,6 @@
         #endregion
 
         private System.Windows.Forms.Label txtLocate;
-        private System.Windows.Forms.Label txtPoint;
         private System.Windows.Forms.Panel pnlContainer;
         private System.Windows.Forms.Label Eps;
         private System.Windows.Forms.TextBox txtEps;
