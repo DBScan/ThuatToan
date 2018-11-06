@@ -153,6 +153,14 @@ namespace DBScan
 
         private void btnRun_Click(object sender, EventArgs e)
         {
+            g.Clear(Color.White);
+            for (int i = 0; i < lst.Count; i++)
+            {
+                g.FillEllipse(new SolidBrush(Color.Black), new Rectangle(lst[i].vt, new Size(10, 10)));
+                lst[i].isChild = false;
+                lst[i].visited = false;
+            }
+
             DBScan(lst, float.Parse(txtEps.Text), int.Parse(cboMinPts.Text), g, brush);
         }
 
