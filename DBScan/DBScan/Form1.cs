@@ -82,6 +82,8 @@ namespace DBScan
             brush = new SolidBrush(color);
 
             C.Add(p);
+            g.FillEllipse(brush, new Rectangle(p.vt, new Size(10, 10)));
+            Thread.Sleep(100);
             p.isChild = true;
             for (int i = 0; i < sphere_points.Count; i++)
             {
